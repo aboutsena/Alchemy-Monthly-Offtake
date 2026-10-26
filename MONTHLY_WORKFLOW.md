@@ -16,20 +16,13 @@ The launcher accepts the registered base, not an arbitrary workbook folder. If a
 
 ## 3. Run preflight
 
-On the existing configured Windows computer:
+Install the complete private Windows package first, following [the English installation guide](portable/START_HERE.md). Open the extracted folder and use its included runtime:
 
-```powershell
-$offtakeProject = Join-Path $env:USERPROFILE 'Alchemy_AI_DEV\OFFTAKE_MVP'
-$offtakePython = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
-& $offtakePython -B -X utf8 (Join-Path $offtakeProject 'automation\run_monthly.py') `
-  --period 2026-10 `
-  --reports 'C:\PATH\Reports\10 October Report' `
-  --validate-only
+```bat
+runtime\python.exe -B -X utf8 offtake.py run --period 2026-10 --reports "C:\PATH\Reports\10 October Report" --validate-only
 ```
 
-Replace the period and report path with real inputs. This example does not claim October has been received or processed. These paths describe the existing installation, not a portable setup script. Another company computer must first receive the reviewed local engine and compatible runtime privately.
-
-Existing visual entry point: `FAZER_OFFTAKE.cmd` in `OFFTAKE_MVP`. Select the month and folder and generate copies. Keep monthly closing independent from any historical action that also refreshes a dashboard.
+Replace the month and report folder with actual inputs. This example does not claim October has been received or processed. `RUN_OFFTAKE.cmd` is the interactive entry point. The complete private package includes the engine, Python, libraries and company configuration; Codex is not required. The older development entry point `FAZER_OFFTAKE.cmd` remains a separate local installation, not a prerequisite for this distribution.
 
 ## 4. Resolve sources, accounts and products
 
@@ -43,19 +36,17 @@ Match product, SKU, size and variant using existing documented mappings. Reuse e
 
 After resolving preflight issues, use the same command without `--validate-only`:
 
-```powershell
-& $offtakePython -B -X utf8 (Join-Path $offtakeProject 'automation\run_monthly.py') `
-  --period 2026-10 `
-  --reports 'C:\PATH\Reports\10 October Report'
+```bat
+runtime\python.exe -B -X utf8 offtake.py run --period 2026-10 --reports "C:\PATH\Reports\10 October Report"
 ```
 
 Outputs contain an Excel ZIP/copies, a receipt, a readable result and `PENDENCIAS.csv`. An unchanged fingerprint can reuse an intact result; changed inputs require validation.
 
 | Result | Meaning |
 | --- | --- |
-| `GERADO` | Copies passed the run's checks |
-| `PARCIAL_GERADO` | Only complete eligible outlets are delivered; the full month is not closed |
-| `PENDENTE`, `FALHOU`, `ENTRADAS_ALTERADAS` | Review the reason; do not treat it as an approved financial delivery |
+| `GENERATED` (`GERADO` in the engine receipt) | Copies passed the run's checks |
+| `PARTIAL_COPIES_GENERATED` (`PARCIAL_GERADO` in the engine receipt) | Only complete eligible outlets are delivered; the full month is not closed |
+| `NEEDS_REVIEW`, `FAILED`, `INPUTS_CHANGED` | Review the reason; do not treat it as an approved financial delivery |
 
 Missing reports are not zero sales. Partial totals cover only delivered files.
 

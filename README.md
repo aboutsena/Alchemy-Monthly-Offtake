@@ -1,5 +1,7 @@
 # Monthly Off-Take
 
+**Update — 26 October 2026:** a functional private Windows package has now been built with the actual engine, portable Python, libraries, company configuration and templates. See [Executable package and installation](EXECUTABLE_PACKAGE.md). The generic portable interface/source is public; commercial readers/configuration and Excel templates are supplied privately in the complete company ZIP.
+
 A repeatable monthly workflow for turning wholesaler reports into outlet off-take Excel workbooks, while preserving previous months, product mappings, formulas and current rebate settings.
 
 **Off-take and the commercial dashboard are separate products.** Off-take uses wholesaler reports. The dashboard uses finance-approved Power BI for performance. They may share a private company/outlet identity registry; neither depends on running the other.
