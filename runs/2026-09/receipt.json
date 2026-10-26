@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "event_id": "MONTHLY_OFFTAKE_REAL_REFILL_202609_20261026",
+  "agent": "Codex desktop",
+  "period": "2026-09",
+  "completed_at": "2026-10-26T11:38:35+07:00",
+  "status": "REAL_CLOSING_DELIVERED_AND_VALIDATED",
+  "authorization_scope": "Specific human request for September in the existing original folder; no recurring publication enabled",
+  "technical_counts": {
+    "inventory": 93,
+    "filled": 68,
+    "unchanged": 25,
+    "zero_outlets_unchanged": 21,
+    "covers_unchanged": 4,
+    "other_month_sheets_byte_exact": 979
+  },
+  "calculation_checks": 68,
+  "write_primitive_checks": 5,
+  "preservation": {
+    "formulas_preserved": true,
+    "metadata_preserved": true,
+    "rebate_parameters_preserved": true
+  },
+  "financial_values_in_this_receipt": false,
+  "real_company_identities_in_this_receipt": false,
+  "exception_summary": [
+    "One pre-existing current-template rebate difference retained instead of forcing an obsolete reference.",
+    "One externally re-saved template reconciled; latest version preserved; only its candidate recomputed."
+  ],
+  "evidence_sha256": {
+    "final-installed-validation.json": "4618becdc74adeac988f844acbf16f26efd5323fe6e9f51ea57559da7437ad91",
+    "manual-install-result.json": "85dd836815aabd3519c80a9455ae3fa88ba3b2060a652a976f17fb178c9e04a6",
+    "workbook-validation.json": "630b951bb0b5cb9b36490b950eed265337ea40c9d39ef3c31fec1e75f82aa0f4",
+    "independent-plan-comparison.json": "5705b3571f8e865f2fd7ba4df91d533d93f7d06726fe16b9b870b710c2b46768",
+    "write-primitives-tests.json": "ac5376fafc50d348d45404277a696c812332b985ab67e730e7565f7672ae3e7c"
+  },
+  "future_month_readiness": "Parameterized local copy-generation workflow available; actual next-month inputs, appropriate base and validations still required.",
+  "production_writes_during_this_documentation_task": false
+}

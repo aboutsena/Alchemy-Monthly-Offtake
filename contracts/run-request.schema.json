@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Monthly off-take human request record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "period", "reports_directory", "approved_template_manifest", "destination_directory", "delivery_mode", "authorization_reference"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "period": {"type": "string", "pattern": "^20[0-9]{2}-(0[1-9]|1[0-2])$"},
+    "reports_directory": {"type": "string", "minLength": 1},
+    "approved_template_manifest": {"type": "string", "minLength": 1},
+    "destination_directory": {"type": "string", "minLength": 1},
+    "delivery_mode": {"enum": ["validate_only", "validated_copies", "separately_authorized_original_delivery"]},
+    "authorization_reference": {"type": "string", "minLength": 1},
+    "shared_registry_version": {"type": ["string", "null"]},
+    "reprocess_closed_month": {"type": "boolean", "default": false},
+    "reprocess_authorization_reference": {"type": "string", "minLength": 1}
+  },
+  "allOf": [{"if": {"properties": {"reprocess_closed_month": {"const": true}}, "required": ["reprocess_closed_month"]}, "then": {"required": ["reprocess_authorization_reference"]}}],
+  "description": "Documentation contract. Not a CLI config, permission grant, monthly --publish switch or instruction to execute received files."
+}

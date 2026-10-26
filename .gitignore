@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.env
+.env.*
+private/
+reports/
+workbooks/
+backups/
+outputs/
+*.xlsx
+*.xls
+*.xlsm
+*.pdf
+*.zip
+registry.json
+*credentials*
+*token*
